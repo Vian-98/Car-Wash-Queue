@@ -14,12 +14,16 @@ $result = mysqli_query($conn, "SELECT * FROM m_customer ORDER BY customer_name")
     <tr>
         <th>Nama</th>
         <th>Telp</th>
+        <th>Plat Kendaraan</th>
+        <th>Jenis Kendaraan</th>
         <th>Aksi</th>
     </tr>
     <?php while ($row = mysqli_fetch_assoc($result)) { ?>
     <tr>
         <td><?php echo htmlspecialchars($row['customer_name']); ?></td>
         <td><?php echo htmlspecialchars($row['phone']); ?></td>
+        <td><?php echo htmlspecialchars($row['plate_number'] ?? ''); ?></td>
+        <td><?php echo htmlspecialchars($row['vehicle_type'] ?? ''); ?></td>
         <td>
             <a href="customer_form.php?id=<?php echo $row['customer_id']; ?>">Edit</a>
             <a href="customer_delete.php?id=<?php echo $row['customer_id']; ?>" onclick="return confirm('Hapus pelanggan ini?')">Hapus</a>

@@ -10,7 +10,9 @@ $customer_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 $data = [
     'customer_name' => '',
-    'phone' => ''
+    'phone' => '',
+    'plate_number' => '',
+    'vehicle_type' => '' 
 ];
 
 if ($customer_id > 0) {
@@ -24,7 +26,13 @@ if ($customer_id > 0) {
     <label>Nama Pelanggan</label><br>
     <input type="text" name="customer_name" value="<?php echo htmlspecialchars($data['customer_name']); ?>"><br>
     <label>No. Telepon</label><br>
-    <input type="text" name="phone" value="<?php echo htmlspecialchars($data['phone']); ?>"><br><br>
+    <input type="text" name="phone" value="<?php echo htmlspecialchars($data['phone']); ?>"><br>
+    
+    <label>Plat Kendaraan</label><br>
+    <input type="text" name="plate_number" value="<?php echo htmlspecialchars($data['plate_number'] ?? ''); ?>"><br>
+    <label>Jenis Kendaraan</label><br>
+    <input type="text" name="vehicle_type" value="<?php echo htmlspecialchars($data['vehicle_type'] ?? ''); ?>"><br><br>
+    
     <button type="submit">Simpan</button>
 </form>
 <?php
