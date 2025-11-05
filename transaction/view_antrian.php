@@ -11,7 +11,7 @@ $sql = "SELECT q.queue_number, q.plate_number, q.vehicle_type, s.service_name, q
 $result = mysqli_query($conn, $sql);
 ?>
 <h2>Daftar Antrian Hari Ini (<?php echo date('d-m-Y'); ?>)</h2>
-<table border="1" cellpadding="5" cellspacing="0">
+<table class="data-table">
     <tr>
         <th>No</th>
         <th>Plat</th>
@@ -21,11 +21,11 @@ $result = mysqli_query($conn, $sql);
     </tr>
     <?php while ($row = mysqli_fetch_assoc($result)) { ?>
     <tr>
-        <td><?php echo $row['queue_number']; ?></td>
-        <td><?php echo strtoupper($row['plate_number']); ?></td>
-        <td><?php echo $row['vehicle_type']; ?></td>
-        <td><?php echo $row['service_name']; ?></td>
-        <td><?php echo strtoupper($row['status']); ?></td>
+        <td><?php echo htmlspecialchars($row['queue_number']); ?></td>
+        <td><?php echo htmlspecialchars(strtoupper($row['plate_number'])); ?></td>
+        <td><?php echo htmlspecialchars($row['vehicle_type']); ?></td>
+        <td><?php echo htmlspecialchars($row['service_name']); ?></td>
+        <td><?php echo htmlspecialchars(strtoupper($row['status'])); ?></td>
     </tr>
     <?php } ?>
 </table>

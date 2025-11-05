@@ -1,12 +1,16 @@
 <?php
 include '../config.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ' . BASE_URL . '/login.php');
+    exit;
+}
 include '../includes/header.php';
 
 $result = mysqli_query($conn, "SELECT * FROM m_customer ORDER BY customer_name");
 ?>
 <h2>Master Pelanggan</h2>
 <a href="customer_form.php">+ Tambah Pelanggan</a>
-<table border="1" cellpadding="5" cellspacing="0">
+<table class="data-table">
     <tr>
         <th>Nama</th>
         <th>Telp</th>

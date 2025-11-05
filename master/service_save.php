@@ -1,5 +1,9 @@
 <?php
 include '../config.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ' . BASE_URL . '/login.php');
+    exit;
+}
 
 $service_id   = isset($_POST['service_id']) ? (int)$_POST['service_id'] : 0;
 $service_code = mysqli_real_escape_string($conn, $_POST['service_code']);

@@ -1,5 +1,9 @@
 <?php
 include '../config.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ' . BASE_URL . '/login.php');
+    exit;
+}
 
 $customer_id   = isset($_POST['customer_id']) ? (int)$_POST['customer_id'] : 0;
 $customer_name = mysqli_real_escape_string($conn, $_POST['customer_name']);

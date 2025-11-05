@@ -1,5 +1,9 @@
 <?php
 include 'config.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ' . BASE_URL . '/login.php');
+    exit;
+}
 include 'includes/header.php';
 
 /* hitung antrian hari ini */

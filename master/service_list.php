@@ -1,5 +1,9 @@
 <?php
 include '../config.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ' . BASE_URL . '/login.php');
+    exit;
+}
 include '../includes/header.php';
 
 /* ambil data layanan */
@@ -7,7 +11,7 @@ $result = mysqli_query($conn, "SELECT * FROM m_service ORDER BY service_name");
 ?>
 <h2>Master Layanan</h2>
 <a href="service_form.php">+ Tambah Layanan</a>
-<table border="1" cellpadding="5" cellspacing="0">
+<table class="data-table">
     <tr>
         <th>Kode</th>
         <th>Nama Layanan</th>
